@@ -1,0 +1,508 @@
+# KSA Skilled Development — Enterprise Web Portal
+
+## Project Overview
+
+**Project Name:** KSA Skilled Development
+
+**Objective:** Develop a premium Saudi Government inspired enterprise web portal using React.js, Node.js, Express.js and MongoDB.
+
+The UI should take inspiration from these websites only:
+
+- https://mt.gov.sa/
+- https://www.hrsd.gov.sa/en
+
+**Never copy any section directly.**
+
+Create an original luxury enterprise design inspired by Saudi Government websites.
+
+The website should look more premium than both reference websites.
+
+The design should feel modern, elegant, trustworthy, government level, corporate and international.
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- React.js
+- Vite
+- TypeScript
+- Tailwind CSS
+- Redux Toolkit
+- React Router
+- React Query
+- Axios
+- Framer Motion
+- GSAP
+- React Hook Form
+- Formik
+- Yup
+- Lucide Icons
+- Shadcn UI
+- Swiper
+- React Helmet
+- React Lazy Load
+- i18next
+- RTL Support
+- LTR Support
+- Dark Mode
+- Light Mode
+- PWA
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- Socket.io
+- Firebase OTP
+- Twilio SMS
+- Cloudinary
+- Nodemailer
+- REST API
+
+### Admin Panel
+
+- React.js
+
+---
+
+## Project Structure
+
+Use professional scalable architecture.
+
+- Feature Based Folder Structure
+- Reusable Components
+- Reusable Hooks
+- Reusable APIs
+- Separate Services
+- Separate Layouts
+- Separate Authentication
+- Separate Middleware
+- Separate Config Files
+- Clean Code
+- Production Ready
+
+---
+
+## Design Requirements
+
+- Saudi Government style
+- Luxury enterprise UI
+- Glass Morphism
+- Soft Shadows
+- Professional Typography
+- Beautiful Icons
+- Green Theme
+- Dark Green
+- White
+- Gold Accent
+- Premium Buttons
+- Premium Cards
+- Professional Hero Sections
+- Premium Forms
+- Premium Dashboard
+- Smooth Animations
+- Pixel Perfect
+- Fully Responsive
+  - Desktop
+  - Laptop
+  - Tablet
+  - Mobile
+
+---
+
+## Pages (130+)
+
+Create more than 130 professionally designed pages.
+
+### Examples
+
+- Home
+- About
+- Vision
+- Mission
+- Chairman Message
+- CEO Message
+- Organization
+- Departments
+- News
+- Media Center
+- Events
+- Gallery
+- Video Gallery
+- Downloads
+- Contact
+- FAQ
+- Support
+- Complaints
+- Suggestions
+- Privacy Policy
+- Terms
+- Branches
+- Partners
+- Projects
+- Success Stories
+- Awards
+- Careers
+- Blogs
+- Testimonials
+- Certificates
+- Verification
+- Tracking
+- Notifications
+- Every Service Page
+- Every Skill Page
+- Every Visa Page
+- Every Hajj Page
+- Every Umrah Page
+- Every Dashboard Page
+- Every Admin Page
+- Every Report Page
+- Every Settings Page
+
+---
+
+## Services (50+)
+
+Create over 50 Saudi skilled worker services.
+
+| Category | Services |
+|----------|----------|
+| Construction | Electrician, Plumber, Welder, Steel Fixer, Scaffolding, Civil Technician, Construction Worker, Painter, Carpenter, Tile Fixer, Gypsum Worker |
+| Mechanical | Mechanical Technician, HVAC, AC Technician, Forklift Operator, Crane Operator |
+| Driving & Logistics | Heavy Driver, Light Driver, Warehouse Worker, Factory Worker |
+| Safety | Safety Officer, HSE Officer |
+| IT & Digital | IT Technician, Software Engineer, Network Engineer, Graphic Designer, Digital Marketing |
+| Business | Accountant, Receptionist |
+| Security & Hospitality | Security Guard, Chef, Waiter, Housekeeping, Laundry |
+| Agriculture & Healthcare | Agriculture, Healthcare, Nursing, Medical Assistant, Lab Technician, Pharmacy Assistant |
+| And many more | — |
+
+---
+
+## Hajj & Umrah Module
+
+Separate premium module.
+
+- Packages
+- Visa
+- Hotels
+- Flights
+- Transport
+- Guides
+- Booking
+- Tracking
+- Downloads
+- Gallery
+- Videos
+- FAQ
+- Support
+
+---
+
+## Authentication
+
+- Signup
+- Login
+- Mobile Number Login
+- OTP Verification
+- Forgot Password
+- Reset Password
+- Remember Me
+- Session Management
+- User Profile
+- KYC
+
+---
+
+## OTP System
+
+1. User enters mobile number
+2. OTP is sent by SMS
+3. User verifies OTP
+4. Account is created
+5. Login is completed
+
+---
+
+## User Dashboard
+
+Beautiful dashboard. User can:
+
+- Update profile
+- Upload passport
+- Upload documents
+- Track visa
+- Track application
+- Download files
+- Download visa
+- Receive certificates
+- Receive notifications
+- Receive SMS
+- Receive emails
+- Receive approvals
+- Support tickets
+- Live chat
+- Invoices
+- History
+
+---
+
+## Admin Dashboard
+
+Enterprise dashboard. Admin can:
+
+### User & Access Management
+
+- Manage users
+- Manage permissions
+- Manage roles
+
+### Content Management
+
+- Manage pages
+- Manage blogs
+- Manage news
+- Manage events
+- Manage services
+- Manage skills
+- Manage Hajj
+- Manage Umrah
+- Manage visa applications
+
+### File Management
+
+- Upload documents
+- Upload contracts
+- Upload passports
+- Upload visa copies
+- Upload certificates
+- Upload images
+- Upload videos
+- Upload PDFs
+- Upload Word files
+- Upload ZIP files
+- Share any file with any user
+- Every shared file instantly appears inside user dashboard
+
+### Communications
+
+Admin can send:
+
+- SMS
+- Email
+- Dashboard notification
+- Push notification
+- Live messages
+- Broadcast messages
+
+---
+
+## Live Chat
+
+- Integrate Tawk.to
+- Also create Socket.io live chat
+- Users can directly chat with admin
+
+---
+
+## Translation
+
+- English
+- Arabic
+- RTL
+- LTR
+- Dynamic language switching
+
+---
+
+## Database (MongoDB)
+
+### Collections
+
+- Users
+- OTP
+- Roles
+- Permissions
+- Applications
+- Visa Files
+- Documents
+- Certificates
+- Messages
+- Chats
+- Notifications
+- Blogs
+- News
+- Gallery
+- Videos
+- Settings
+- Logs
+
+Everything dynamic.
+
+---
+
+## SEO
+
+Every page must include:
+
+- Meta Title
+- Meta Description
+- Keywords
+- Canonical URL
+- Open Graph
+- Twitter Cards
+- Schema.org
+- Breadcrumb
+- XML Sitemap
+- Robots.txt
+
+---
+
+## Security
+
+- JWT
+- Password Hashing
+- Helmet
+- Rate Limiting
+- Validation
+- XSS Protection
+- CSRF Protection
+- Audit Logs
+
+---
+
+## Performance
+
+- Lazy Loading
+- Code Splitting
+- Caching
+- Image Optimization
+- Compression
+- 90+ Google Lighthouse Score
+
+---
+
+## Images
+
+Use copyright-free high quality images from:
+
+- Unsplash
+- Pexels
+- Pixabay
+
+### Image Categories
+
+- Saudi workforce images
+- Hajj images
+- Umrah images
+- Government Office images
+- Engineering images
+- Healthcare images
+- Business images
+
+**Do not use placeholders.**
+
+---
+
+## Home Page
+
+- Luxury hero section
+- Video background
+- Professional slider
+- Statistics
+- Vision
+- Mission
+- Chairman
+- CEO
+- Services
+- Training
+- Visa
+- Hajj
+- Umrah
+- Success Stories
+- Testimonials
+- Latest News
+- Latest Events
+- Gallery
+- Videos
+- Partners
+- Downloads
+- FAQ
+- Contact
+- Newsletter
+- Premium Footer
+
+---
+
+## Animations
+
+- Framer Motion
+- GSAP
+- Parallax
+- Hover Animations
+- Counters
+- Scroll Animations
+- Loading Animations
+- Skeleton Loading
+
+---
+
+## API
+
+- Create complete REST API
+- Swagger Documentation
+
+---
+
+## Documentation
+
+Generate complete documentation:
+
+- Installation Guide
+- Deployment Guide
+- API Documentation
+- Folder Structure Documentation
+
+---
+
+## Important Rules
+
+- Do not generate fake code
+- Do not generate placeholder pages
+- Every page must be fully designed
+- Every page must be connected with backend
+- Every form must save data inside MongoDB
+- Every module must be production ready
+- Every API must work
+- Every dashboard must be functional
+- Build this project exactly like an enterprise product worth over 600,000 PKR
+- The final quality must be equal to or better than enterprise Saudi Government portals
+
+---
+
+## Development Phases
+
+Work phase by phase. Never skip any feature. Continue automatically until the entire project is complete.
+
+| Phase | Scope |
+|-------|-------|
+| 1 | Architecture |
+| 2 | Routing |
+| 3 | UI System |
+| 4 | Authentication |
+| 5 | Backend |
+| 6 | Database |
+| 7 | Dashboards |
+| 8 | Remaining Modules |
+
+---
+
+## Reference Websites
+
+- https://mt.gov.sa/
+- https://www.hrsd.gov.sa/en

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh -p 65002 -o BatchMode=yes -o ConnectTimeout=10 -o StrictHostKeyChecking=accept-new u344641664@147.93.80.83 \"echo connected\")",
+      "Bash(ssh -o BatchMode=yes -o ConnectTimeout=10 -o StrictHostKeyChecking=accept-new -p 65002 u344641664@147.93.80.83 'whoami; hostname; pwd; uname -a')",
+      "PowerShell(if \\(Test-Path \"$env:USERPROFILE\\\\.ssh\\\\id_ed25519.pub\"\\) { \"KEY EXISTS\"; Get-Content \"$env:USERPROFILE\\\\.ssh\\\\id_ed25519.pub\" } else { \"NO KEY\" })",
+      "PowerShell(if \\(-not \\(Test-Path \"$env:USERPROFILE\\\\.ssh\"\\)\\) { New-Item -ItemType Directory -Force \"$env:USERPROFILE\\\\.ssh\" | Out-Null }; ssh-keygen -t ed25519 -C \"moin.linez@gmail.com\" -f \"$env:USERPROFILE\\\\.ssh\\\\id_ed25519\" -N '\"\"'; if \\($?\\) { \"--- PUBLIC KEY ---\"; Get-Content \"$env:USERPROFILE\\\\.ssh\\\\id_ed25519.pub\" })",
+      "Bash(ssh -V)"
+    ]
+  }
+}

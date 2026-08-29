@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Builds & caches
+frontend/dist/
+frontend/dist-ssr/
+*.local
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local runtime data / uploads
+backend/data/
+backend/uploads/
+uploads/
+
+# Archives / media dumps (keep repo lean)
+*.zip
+video.mp4
+.backup_old/
+
+# OS / editor
+.vscode/
+.idea/

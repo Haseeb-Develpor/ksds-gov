@@ -1,0 +1,41 @@
+import type { NavItem } from '../components/layout/DashboardLayout';
+
+export const userNav: NavItem[] = [
+  { to: '/dashboard', label: 'Overview', icon: 'LayoutDashboard' },
+  { to: '/dashboard/profile', label: 'My Profile & ID card', icon: 'User' },
+  { to: '/dashboard/documents', label: 'My Documents', icon: 'Folder' },
+  { to: '/dashboard/applications', label: 'My Applications', icon: 'FileText' },
+  { to: '/dashboard/passport', label: 'Passport', icon: 'BookUser' },
+  { to: '/dashboard/visa-tracking', label: 'Visa Tracking', icon: 'Plane' },
+  { to: '/dashboard/certificates', label: 'Certificates', icon: 'Award' },
+  { to: '/dashboard/downloads', label: 'Downloads', icon: 'Download' },
+  { to: '/dashboard/invoices', label: 'Invoices', icon: 'Receipt' },
+  { to: '/dashboard/notifications', label: 'Notifications', icon: 'Bell' },
+  { to: '/dashboard/messages', label: 'Messages', icon: 'MessageSquare' },
+  { to: '/dashboard/support', label: 'Support', icon: 'LifeBuoy' },
+  { to: '/dashboard/settings', label: 'Settings', icon: 'Settings' },
+];
+
+export const adminNav: NavItem[] = [
+  { to: '/admin', label: 'Dashboard', icon: 'LayoutDashboard' },
+  { to: '/admin/messages', label: 'Business Mail', icon: 'Mail' },
+  { to: '/admin/applications', label: 'Applications', icon: 'FileText' },
+  { to: '/admin/users', label: 'Users', icon: 'Users' },
+  { to: '/admin/roles', label: 'Roles', icon: 'Shield' },
+  { to: '/admin/permissions', label: 'Permissions', icon: 'Key' },
+  { to: '/admin/visas', label: 'Visa Applications', icon: 'Plane' },
+  { to: '/admin/services', label: 'Services', icon: 'Wrench' },
+  { to: '/admin/skills', label: 'Skills', icon: 'GraduationCap' },
+  { to: '/admin/hajj', label: 'Hajj', icon: 'Building2' },
+  { to: '/admin/umrah', label: 'Umrah', icon: 'Building' },
+  { to: '/admin/news', label: 'News', icon: 'Newspaper' },
+  { to: '/admin/blogs', label: 'Blogs', icon: 'PenLine' },
+  { to: '/admin/events', label: 'Events', icon: 'Calendar' },
+  { to: '/admin/pages', label: 'Pages', icon: 'FileStack' },
+  { to: '/admin/files', label: 'File Sharing', icon: 'FolderUp' },
+  { to: '/admin/broadcast', label: 'Broadcast', icon: 'Radio' },
+  { to: '/admin/notifications', label: 'Notifications', icon: 'Bell' },
+  { to: '/admin/reports', label: 'Reports', icon: 'BarChart3' },
+  { to: '/admin/audit-logs', label: 'Audit Logs', icon: 'ScrollText' },
+  { to: '/admin/settings', label: 'Settings', icon: 'Settings' },
+];

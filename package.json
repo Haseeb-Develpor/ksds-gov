@@ -1,0 +1,23 @@
+{
+  "name": "ksa-skilled-development",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KSA Skilled Development — Enterprise Web Portal",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "npm run build:vite --prefix frontend",
+    "build:backend": "npm run build --prefix backend",
+    "preview": "npm run build && npm run preview:server",
+    "preview:server": "npm run preview --prefix backend",
+    "tunnel": "npx localtunnel --port 5000",
+    "preview:api": "node preview-server.js",
+    "preview:live": "concurrently -n api,web,tunnel -c green,blue,cyan \"node preview-server.js\" \"npm run dev --prefix frontend\" \"npx --yes localtunnel --port 5173\"",
+    "start": "npm run start --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
