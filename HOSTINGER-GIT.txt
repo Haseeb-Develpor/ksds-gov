@@ -1,20 +1,16 @@
-Hostinger Git se upload
-=======================
+GitHub (private):
+https://github.com/Haseeb-Develpor/ksds-gov.git
 
-Repo (private): baad mein GitHub URL yahan aa jayegi.
-
-Hostinger hPanel:
+Hostinger par:
 1. Advanced -> Git
-2. Repository URL paste karo
+2. Repository URL: https://github.com/Haseeb-Develpor/ksds-gov.git
 3. Branch: main
 4. Deploy / Pull
 
 Phir Node.js:
-- Application root = woh folder jahan git pull hua
 - Startup file = backend/src/index.js
-- NPM Install, phir Restart
+- NPM Install -> Restart
 
-Pehli dafa backend/.env banao (backend/.env.example copy).
+Pehli dafa backend/.env banao (.env.example copy).
 MAIL_SMTP_PASS mein email password likho.
-
-.env git mein nahi jati — yeh theek hai.
+.env git se nahi aati.
