@@ -17,7 +17,10 @@ export default function Login() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await dispatch(login(form));
+    const res = await dispatch(login({
+      email: form.email.trim(),
+      password: form.password,
+    }));
     if (login.fulfilled.match(res)) {
       navigate(res.payload.user?.role === 'admin' ? '/admin' : '/dashboard');
     }
@@ -26,15 +29,33 @@ export default function Login() {
   return (
     <AuthShell title={t('auth.loginTitle')} subtitle={t('auth.loginSub')}>
       <Seo title="Login" />
-      <form onSubmit={submit} className="space-y-4">
+      <form onSubmit={submit} className="space-y-4" autoComplete="off">
         {error && <div className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600 dark:bg-red-500/10">{error}</div>}
         <div className="relative">
           <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-          <input required type="email" placeholder={t('auth.email')} className="input pl-10" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+          <input
+            required
+            type="email"
+            name="client-email"
+            autoComplete="off"
+            placeholder={t('auth.email')}
+            className="input pl-10"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
         </div>
         <div className="relative">
           <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-          <input required type="password" placeholder={t('auth.password')} className="input pl-10" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
+          <input
+            required
+            type="password"
+            name="client-password"
+            autoComplete="new-password"
+            placeholder={t('auth.password')}
+            className="input pl-10"
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+          />
         </div>
         <div className="flex items-center justify-between text-sm">
           <label className="flex items-center gap-2 text-slate-500"><input type="checkbox" className="rounded" /> {t('auth.remember')}</label>
@@ -45,8 +66,7 @@ export default function Login() {
         </button>
       </form>
       <div className="my-5 flex items-center gap-3 text-xs text-slate-400"><div className="h-px flex-1 bg-slate-200 dark:bg-white/10" />{t('auth.or')}<div className="h-px flex-1 bg-slate-200 dark:bg-white/10" /></div>
-      <Link to="/otp-login" className="btn-outline w-full">📱 {t('auth.otpLogin')} (Clients)</Link>
-      <p className="mt-3 text-center text-xs text-slate-400">Admin login is email &amp; password only — OTP cannot access admin.</p>
+      <Link to="/otp-login" className="btn-outline w-full">{t('auth.otpLogin')}</Link>
       <p className="mt-6 text-center text-sm text-slate-500">{t('auth.noAccount')} <Link to="/register" className="font-semibold text-primary-600 dark:text-gold-400">{t('auth.signUp')}</Link></p>
     </AuthShell>
   );

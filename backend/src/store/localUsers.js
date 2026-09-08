@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
-const { normalizePhone } = require('../services/whatsapp');
+const { normalizePhone } = require('../utils/phone');
 
 const dataDir = path.join(__dirname, '..', '..', 'data');
 const filePath = path.join(dataDir, 'users.json');
@@ -63,8 +63,8 @@ function findByPhone(phone) {
 }
 
 function findByEmail(email) {
-  const e = String(email || '').toLowerCase();
-  return readAll().find((u) => u.email === e) || null;
+  const e = String(email || '').toLowerCase().trim();
+  return readAll().find((u) => String(u.email || '').toLowerCase().trim() === e) || null;
 }
 
 function findById(id) {

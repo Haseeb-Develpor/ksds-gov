@@ -70,10 +70,10 @@ export default function Register() {
           <input required placeholder={t('auth.firstName')} className="input" {...f('firstName')} />
           <input required placeholder={t('auth.lastName')} className="input" {...f('lastName')} />
         </div>
-        <input required type="email" placeholder={t('auth.email')} className="input" {...f('email')} />
-        <input required placeholder="WhatsApp number (saved for OTP login later)" className="input" {...f('phone')} />
+        <input required type="email" autoComplete="email" placeholder={t('auth.email')} className="input" {...f('email')} />
+        <input required type="tel" autoComplete="tel" placeholder={t('auth.phone')} className="input" {...f('phone')} />
         <p className="text-xs text-slate-500">
-          Number is saved with your account. OTP is only used later for login or forgot password — not at signup.
+          Login OTP is sent to this email (not shown on screen). Mobile number is only for your profile.
         </p>
         <input required type="password" minLength={6} placeholder={t('auth.password')} className="input" {...f('password')} />
 

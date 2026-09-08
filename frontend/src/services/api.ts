@@ -14,7 +14,9 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    if (err.response?.status === 401) {
+    const url = String(err.config?.url || '');
+    const isCredentialAttempt = url.includes('/auth/login') || url.includes('/auth/otp');
+    if (err.response?.status === 401 && !isCredentialAttempt) {
       localStorage.removeItem('token');
     }
     return Promise.reject(err);
@@ -24,9 +26,9 @@ api.interceptors.response.use(
 export const authApi = {
   login: (data: { email: string; password: string }) => api.post('/auth/login', data),
   register: (data: any) => api.post('/auth/register', data),
-  sendOtp: (phone: string, purpose: 'login' | 'reset' = 'login') =>
-    api.post('/auth/otp/send', { phone, purpose }),
-  verifyOtp: (data: { phone: string; code: string; purpose?: 'login' | 'reset'; newPassword?: string }) =>
+  sendOtp: (email: string, purpose: 'login' | 'reset' = 'login') =>
+    api.post('/auth/otp/send', { email, purpose }),
+  verifyOtp: (data: { email: string; code: string; purpose?: 'login' | 'reset'; newPassword?: string }) =>
     api.post('/auth/otp/verify', data),
   me: () => api.get('/auth/me'),
   idTypes: () => api.get('/auth/id-types'),

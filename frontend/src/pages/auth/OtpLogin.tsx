@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Loader2, MessageCircle } from 'lucide-react';
+import { Loader2, Mail } from 'lucide-react';
 import Seo from '../../components/common/Seo';
 import AuthShell from '../../components/auth/AuthShell';
 import { authApi } from '../../services/api';
@@ -12,10 +12,9 @@ export default function OtpLogin() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [step, setStep] = useState<'phone' | 'code'>('phone');
-  const [phone, setPhone] = useState('');
-  const [phoneMasked, setPhoneMasked] = useState('');
-  const [otpCode, setOtpCode] = useState('');
+  const [step, setStep] = useState<'email' | 'code'>('email');
+  const [email, setEmail] = useState('');
+  const [emailMasked, setEmailMasked] = useState('');
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState('');
@@ -26,16 +25,14 @@ export default function OtpLogin() {
     setLoading(true);
     setMsg('');
     setError('');
-    setOtpCode('');
     try {
-      const r = await authApi.sendOtp(phone, 'login');
-      setPhoneMasked(r.data?.phoneMasked || '');
-      setOtpCode(r.data?.otpCode || '');
-      setMsg(r.data?.message || 'OTP generated. Enter the code below.');
+      const r = await authApi.sendOtp(email.trim(), 'login');
+      setEmailMasked(r.data?.emailMasked || email);
+      setMsg(r.data?.message || 'OTP sent to your email. Check inbox / spam.');
       setStep('code');
       setCode('');
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Could not send OTP. Use the same number from registration.');
+      setError(err.response?.data?.message || 'Could not send OTP. Use your registered email.');
     }
     setLoading(false);
   };
@@ -45,7 +42,7 @@ export default function OtpLogin() {
     setLoading(true);
     setError('');
     try {
-      const r = await authApi.verifyOtp({ phone, code, purpose: 'login' });
+      const r = await authApi.verifyOtp({ email, code, purpose: 'login' });
       if (r.data.user?.role === 'admin') {
         setError('Admin must login with email and password only.');
         setLoading(false);
@@ -63,10 +60,9 @@ export default function OtpLogin() {
     setLoading(true);
     setError('');
     try {
-      const r = await authApi.sendOtp(phone, 'login');
-      setPhoneMasked(r.data?.phoneMasked || phoneMasked);
-      setOtpCode(r.data?.otpCode || '');
-      setMsg(r.data?.message || 'OTP resent.');
+      const r = await authApi.sendOtp(email.trim(), 'login');
+      setEmailMasked(r.data?.emailMasked || emailMasked);
+      setMsg(r.data?.message || 'OTP resent to your email.');
       setCode('');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Could not resend OTP');
@@ -75,46 +71,42 @@ export default function OtpLogin() {
   };
 
   return (
-    <AuthShell title={t('auth.otpLogin')} subtitle="Client login — use the WhatsApp number saved at registration">
+    <AuthShell title={t('auth.otpLogin')} subtitle="Client login — OTP goes to your registered email">
       <Seo title="OTP Login" />
       {error && <div className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600 dark:bg-red-500/10">{error}</div>}
       {msg && (
         <div className="mb-4 flex gap-2 rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-200">
-          <MessageCircle size={18} className="mt-0.5 shrink-0" />
+          <Mail size={18} className="mt-0.5 shrink-0" />
           <span>{msg}</span>
         </div>
       )}
 
-      {step === 'phone' ? (
+      {step === 'email' ? (
         <form onSubmit={sendOtp} className="space-y-4">
           <input
             required
-            placeholder="Registered WhatsApp number"
+            type="email"
+            name="otp-email"
+            autoComplete="off"
+            placeholder="Registered email"
             className="input"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <p className="text-xs text-slate-500">
-            Must be the same number you used when creating the account. OTP opens only that account.
+            Use the same email you registered with. OTP is sent to that inbox only.
           </p>
           <button disabled={loading} className="btn-primary w-full">
-            {loading ? <Loader2 className="animate-spin" size={18} /> : 'Generate OTP'}
+            {loading ? <Loader2 className="animate-spin" size={18} /> : 'Send email OTP'}
           </button>
         </form>
       ) : (
         <form onSubmit={verify} className="space-y-4">
           <p className="text-center text-sm text-slate-600 dark:text-slate-300">
-            OTP for
+            Enter the 6-digit code sent to
             <br />
-            <span className="font-semibold text-primary-700 dark:text-gold-400">{phoneMasked || 'your number'}</span>
+            <span className="font-semibold text-primary-700 dark:text-gold-400">{emailMasked || 'your email'}</span>
           </p>
-          {otpCode && (
-            <div className="rounded-xl border border-dashed border-primary-300 bg-primary-50 px-4 py-3 text-center dark:border-gold-500/40 dark:bg-white/5">
-              <p className="text-xs uppercase tracking-wide text-slate-500">Your OTP code</p>
-              <p className="font-display text-3xl font-bold tracking-[0.35em] text-primary-800 dark:text-gold-300">{otpCode}</p>
-              <p className="mt-1 text-xs text-slate-500">Enter this code below to open your dashboard</p>
-            </div>
-          )}
           <input
             required
             placeholder="••••••"
@@ -129,19 +121,18 @@ export default function OtpLogin() {
             {loading ? <Loader2 className="animate-spin" size={18} /> : 'Verify & Open Dashboard'}
           </button>
           <button type="button" disabled={loading} onClick={resend} className="btn-ghost w-full">
-            Generate new OTP
+            Resend email OTP
           </button>
-          <button type="button" onClick={() => setStep('phone')} className="btn-ghost w-full">
-            Change number
+          <button type="button" onClick={() => setStep('email')} className="btn-ghost w-full">
+            Change email
           </button>
         </form>
       )}
 
       <p className="mt-6 text-center text-sm text-slate-500">
-        Admin?{' '}
-        <Link to="/login" className="font-semibold text-primary-600 dark:text-gold-400">Email & password login</Link>
+        <Link to="/login" className="font-semibold text-primary-600 dark:text-gold-400">{t('auth.signIn')}</Link>
         {' · '}
-        <Link to="/register" className="font-semibold text-primary-600 dark:text-gold-400">{t('auth.register')}</Link>
+        <Link to="/register" className="font-semibold text-primary-600 dark:text-gold-400">{t('auth.signUp')}</Link>
       </p>
     </AuthShell>
   );

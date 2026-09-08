@@ -1,0 +1,20 @@
+Hostinger Git se upload
+=======================
+
+Repo (private): baad mein GitHub URL yahan aa jayegi.
+
+Hostinger hPanel:
+1. Advanced -> Git
+2. Repository URL paste karo
+3. Branch: main
+4. Deploy / Pull
+
+Phir Node.js:
+- Application root = woh folder jahan git pull hua
+- Startup file = backend/src/index.js
+- NPM Install, phir Restart
+
+Pehli dafa backend/.env banao (backend/.env.example copy).
+MAIL_SMTP_PASS mein email password likho.
+
+.env git mein nahi jati — yeh theek hai.

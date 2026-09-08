@@ -73,10 +73,10 @@ export default {
     signIn: 'Sign In',
     signUp: 'Sign Up',
     or: 'or',
-    otpLogin: 'Login with WhatsApp OTP',
+    otpLogin: 'Login with Email OTP',
     noAccount: "Don't have an account?",
     haveAccount: 'Already have an account?',
-    whatsappOtpHint: 'OTP will be sent to this number on WhatsApp.',
+    emailOtpHint: 'OTP will be sent to your registered email.',
   },
   common: {
     loading: 'Loading…',

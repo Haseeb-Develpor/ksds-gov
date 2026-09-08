@@ -25,14 +25,19 @@ function createTransport() {
 /**
  * attachments: [{ filename, path, contentType? }]
  */
-async function sendMail({ to, cc, bcc, subject, body, replyTo, inReplyTo, references, attachments }) {
+async function sendMail({ to, cc, bcc, subject, body, html, replyTo, inReplyTo, references, attachments }) {
   const fromAddr = FROM();
+  const recipient = String(to || '').trim();
+  if (!recipient || !recipient.includes('@')) {
+    return { sent: false, provider: 'smtp', error: 'Recipient email is missing' };
+  }
+
   const transport = createTransport();
   if (!transport) {
     return {
       sent: false,
       provider: 'local',
-      message: 'SMTP not configured — message saved in Admin Mail only.',
+      message: 'SMTP not configured — cannot deliver email.',
     };
   }
 
@@ -47,22 +52,53 @@ async function sendMail({ to, cc, bcc, subject, body, replyTo, inReplyTo, refere
   try {
     const info = await transport.sendMail({
       from: `"${FROM_NAME()}" <${fromAddr}>`,
-      to,
+      to: recipient,
       cc: cc || undefined,
       bcc: bcc || undefined,
       replyTo: replyTo || fromAddr,
       subject,
       text: body,
-      html: `<div style="font-family:Arial,sans-serif;line-height:1.5;white-space:pre-wrap">${escapeHtml(body)}</div>`,
+      html: html || `<div style="font-family:Arial,sans-serif;line-height:1.5;white-space:pre-wrap">${escapeHtml(body)}</div>`,
       inReplyTo: inReplyTo || undefined,
       references: references || undefined,
       attachments: mailAttachments.length ? mailAttachments : undefined,
     });
-    return { sent: true, provider: 'smtp', id: info.messageId };
+    return { sent: true, provider: 'smtp', id: info.messageId, to: recipient };
   } catch (err) {
     console.error('[Mail SMTP]', err.message);
     return { sent: false, provider: 'smtp', error: err.message };
   }
+}
+
+async function sendOtpEmail(to, code, purpose = 'login') {
+  const recipient = String(to || '').trim().toLowerCase();
+  const subject =
+    purpose === 'reset'
+      ? 'Password reset code — KSA Skilled Development'
+      : 'Your login OTP — KSA Skilled Development';
+  const body = [
+    'Assalam o Alaikum,',
+    '',
+    `Your verification code is: ${code}`,
+    '',
+    'This code is valid for 5 minutes. Do not share it with anyone.',
+    '',
+    'If you did not request this, you can ignore this email.',
+    '',
+    '— KSA Skilled Development',
+  ].join('\n');
+  const html = `
+    <div style="font-family:Arial,sans-serif;line-height:1.5;color:#0f172a">
+      <p>Assalam o Alaikum,</p>
+      <p>Your verification code is:</p>
+      <p style="font-size:28px;letter-spacing:8px;font-weight:700;color:#0f4c81">${escapeHtml(code)}</p>
+      <p>This code is valid for 5 minutes. Do not share it with anyone.</p>
+      <p>If you did not request this, you can ignore this email.</p>
+      <p>— KSA Skilled Development</p>
+    </div>
+  `;
+
+  return sendMail({ to: recipient, subject, body, html });
 }
 
 function escapeHtml(s) {
@@ -73,4 +109,4 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;');
 }
 
-module.exports = { sendMail, smtpConfigured, FROM, FROM_NAME };
+module.exports = { sendMail, sendOtpEmail, smtpConfigured, FROM, FROM_NAME };

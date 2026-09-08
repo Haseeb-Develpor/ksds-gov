@@ -78,7 +78,7 @@ export default function Profile() {
             <dl className="space-y-2 text-sm">
               <div className="flex justify-between gap-3"><dt className="text-slate-500">Name</dt><dd className="font-medium text-right">{name}</dd></div>
               <div className="flex justify-between gap-3"><dt className="text-slate-500">Email</dt><dd className="font-medium text-right break-all">{user?.email || '—'}</dd></div>
-              <div className="flex justify-between gap-3"><dt className="text-slate-500">WhatsApp</dt><dd className="font-medium text-right">{user?.phone || '—'}</dd></div>
+              <div className="flex justify-between gap-3"><dt className="text-slate-500">Mobile</dt><dd className="font-medium text-right">{user?.phone || '—'}</dd></div>
               <div className="flex justify-between gap-3"><dt className="text-slate-500">KYC status</dt><dd className="font-medium capitalize">{user?.kycStatus || 'pending'}</dd></div>
               <div className="flex justify-between gap-3"><dt className="text-slate-500">ID type</dt><dd className="font-medium text-right max-w-[60%]">{user?.idDocumentLabel || '—'}</dd></div>
             </dl>

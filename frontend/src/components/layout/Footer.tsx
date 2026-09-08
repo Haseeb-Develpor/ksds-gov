@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, MapPin, MessageCircle, Info, GraduationCap, Briefcase, FileText, Newspaper, LayoutGrid, Plane } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Phone, Mail, MapPin, Info, GraduationCap, Briefcase, FileText, Newspaper, LayoutGrid, Plane } from 'lucide-react';
 import { LogoMark } from '../common/Logo';
-import { WHATSAPP_NUMBER, WHATSAPP_LINK, CONTACT_EMAIL } from '../../data/contact';
+import { PHONE_NUMBER, PHONE_TEL, CONTACT_EMAIL } from '../../data/contact';
 
 // Slim icon bar shown ONLY on the home page (like the reference screenshot).
 const slimLinks: [string, string, React.ComponentType<{ size?: number }>][] = [
@@ -78,11 +78,10 @@ export default function Footer() {
           <p className="mt-4 max-w-sm text-sm text-white/70">{t('footer.about')}</p>
           <div className="mt-5 space-y-2 text-sm text-white/70">
             <p className="flex items-center gap-2"><MapPin size={16} className="text-gold-400" /> King Abdul Aziz Road, Al Wizarat, Riyadh 12626, Saudi Arabia</p>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 transition hover:text-gold-300"><MessageCircle size={16} className="text-gold-400" /> {WHATSAPP_NUMBER}</a>
+            <a href={PHONE_TEL} className="flex items-center gap-2 transition hover:text-gold-300"><Phone size={16} className="text-gold-400" /> {PHONE_NUMBER}</a>
             <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2 transition hover:text-gold-300"><Mail size={16} className="text-gold-400" /> {CONTACT_EMAIL}</a>
           </div>
           <div className="mt-5 flex gap-2">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 transition hover:bg-[#25D366]"><MessageCircle size={16} /></a>
             {[Facebook, Twitter, Instagram, Linkedin, Youtube].map((Icon, i) => (
               <a key={i} href="#" className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 transition hover:bg-gold-500"><Icon size={16} /></a>
             ))}

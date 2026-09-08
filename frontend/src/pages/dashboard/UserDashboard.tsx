@@ -108,7 +108,7 @@ export default function UserDashboard() {
               <Phone size={20} />
             </div>
             <p className="mt-3 font-display text-lg font-extrabold text-slate-900 dark:text-white truncate">{user?.phone || '—'}</p>
-            <p className="text-sm text-slate-500">Your WhatsApp number</p>
+            <p className="text-sm text-slate-500">Your mobile number</p>
           </div>
         </Reveal>
       </div>

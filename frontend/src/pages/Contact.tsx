@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { MapPin, Mail, Clock, MessageCircle } from 'lucide-react';
+import { MapPin, Mail, Clock, Phone } from 'lucide-react';
 import Seo from '../components/common/Seo';
 import PageHeader from '../components/common/PageHeader';
 import Reveal from '../components/common/Reveal';
 import { contentApi } from '../services/api';
-import { WHATSAPP_NUMBER, WHATSAPP_LINK, CONTACT_EMAIL } from '../data/contact';
+import { PHONE_NUMBER, PHONE_TEL, CONTACT_EMAIL } from '../data/contact';
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -18,7 +18,7 @@ export default function Contact() {
 
   const info = [
     [MapPin, 'Address', 'King Abdul Aziz Road, Al Wizarat, Riyadh 12626, Saudi Arabia', undefined],
-    [MessageCircle, 'WhatsApp', WHATSAPP_NUMBER, WHATSAPP_LINK],
+    [Phone, 'Phone', PHONE_NUMBER, PHONE_TEL],
     [Mail, 'Email', CONTACT_EMAIL, `mailto:${CONTACT_EMAIL}`],
     [Clock, 'Hours', 'Sun–Thu, 8:00 AM – 5:00 PM', undefined],
   ];

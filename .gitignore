@@ -11,8 +11,8 @@ backend/.env
 backend/.env.*
 !backend/.env.example
 
-# Builds & caches
-frontend/dist/
+# Built site — tracked so Hostinger Git deploy works without a zip
+# frontend/dist/
 frontend/dist-ssr/
 *.local
 .DS_Store
@@ -26,6 +26,9 @@ npm-debug.log*
 backend/data/
 backend/uploads/
 uploads/
+
+# Hostinger deploy bundle (local upload package)
+hostinger-upload/
 
 # Archives / media dumps (keep repo lean)
 *.zip
