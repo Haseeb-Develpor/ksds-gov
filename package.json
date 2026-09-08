@@ -15,7 +15,8 @@
     "tunnel": "npx localtunnel --port 5000",
     "preview:api": "node preview-server.js",
     "preview:live": "concurrently -n api,web,tunnel -c green,blue,cyan \"node preview-server.js\" \"npm run dev --prefix frontend\" \"npx --yes localtunnel --port 5173\"",
-    "start": "npm run start --prefix backend"
+    "postinstall": "npm install --omit=dev --prefix ./backend",
+    "start": "node backend/src/index.js"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
