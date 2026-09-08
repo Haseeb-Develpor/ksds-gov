@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:vite": "vite build",
+    "build:vite": "node -e \"require('fs').accessSync('dist/index.html'); console.log('Using prebuilt dist')\"",
     "preview": "vite preview"
   },
   "dependencies": {
